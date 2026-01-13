@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mal que a Música Move</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Mrs+Saint+Delafield&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="vignette"></div>
+    <div class="flashlight"></div>
+
+    <div class="container paper">
+        <div class="blood-drip"></div>
+        
+        <header>
+            <h1 class="melting-text">O Mal que a Música Move</h1>
+            <p class="subtitle">A partitura final foi escrita com pavor.</p>
+        </header>
+
+        <ul class="links">
+            <li><a href="pages/player1.html"><span>&dagger;</span> Jogadora 1</a></li>
+            <li><a href="pages/player2.html"><span>&dagger;</span> Jogadora 2</a></li>
+            <li><a href="pages/dm.html" class="master-link"><span>&brvbar;</span> O Mestre</a></li>
+        </ul>
+
+        <div class="music-lines">
+            <div class="clef"></div>
+        </div>
+    </div>
+
+    <script type="module" src="js/firebase.js"></script>
+
+    <script>
+        const flashlight = document.querySelector('.flashlight');
+        document.addEventListener('mousemove', e => {
+            flashlight.style.setProperty('--x', e.clientX + 'px');
+            flashlight.style.setProperty('--y', e.clientY + 'px');
+        });
+    </script>
+</body>
+</html>
