@@ -1,0 +1,129 @@
+:root {
+    --bg: #050505;
+    --paper: #b3a386;
+    --dark-ink: #121212;
+    --blood: #4d0000;
+    --font-horror: 'Creepster', cursive;
+    --font-script: 'Mrs Saint Delafield', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Special Elite', serif;
+    overflow: hidden;
+    cursor: none; /* Esconde o mouse para usar a lanterna */
+}
+
+/* --- Efeitos de Iluminação --- */
+.vignette {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 30%, black 90%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.flashlight {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), transparent 10%, rgba(0,0,0,0.95) 40%);
+    z-index: 9;
+    pointer-events: none;
+}
+
+/* --- O Papel Amaldiçoado --- */
+.container {
+    background: var(--paper);
+    padding: 60px 40px;
+    width: 90%;
+    max-width: 480px;
+    position: relative;
+    box-shadow: 0 0 100px rgba(0,0,0,1);
+    transform: rotate(-1deg);
+    animation: pulse 6s infinite ease-in-out;
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+}
+
+@keyframes pulse {
+    0%, 100% { transform: rotate(-1deg) scale(1); }
+    50% { transform: rotate(0.5deg) scale(1.02); filter: brightness(0.8); }
+}
+
+/* --- Texto Derretendo --- */
+.melting-text {
+    font-family: var(--font-horror);
+    font-size: 3rem;
+    color: var(--dark-ink);
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 2px 5px 10px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+    font-family: var(--font-script);
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--blood);
+    margin-bottom: 40px;
+}
+
+/* --- Links de Investigação --- */
+ul.links { list-style: none; }
+
+li { margin-bottom: 20px; }
+
+a {
+    display: block;
+    text-decoration: none;
+    color: var(--dark-ink);
+    font-size: 1.5rem;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-left: 4px solid var(--dark-ink);
+    background: rgba(0,0,0,0.05);
+    transition: all 0.3s;
+}
+
+a:hover {
+    background: rgba(77, 0, 0, 0.1);
+    border-left: 4px solid var(--blood);
+    color: var(--blood);
+    transform: translateX(10px);
+    font-family: var(--font-horror); /* O texto se transforma ao passar o mouse */
+}
+
+.master-link {
+    color: var(--blood);
+    border-left-color: var(--blood);
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+/* --- Detalhes de Música Velha --- */
+.music-lines {
+    margin-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    height: 40px;
+    background-image: repeating-linear-gradient(transparent, transparent 5px, rgba(0,0,0,0.1) 5px, rgba(0,0,0,0.1) 6px);
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+    body { cursor: auto; } /* Mouse volta ao normal no celular */
+    .flashlight { display: none; } /* Remove lanterna no mobile para não bugar o toque */
+    .vignette { background: radial-gradient(circle, transparent 50%, black 120%); }
+    
+    .container {
+        width: 95%;
+        padding: 40px 20px;
+        animation: none;
+    }
+
+    .melting-text { font-size: 2.2rem; }
+}
