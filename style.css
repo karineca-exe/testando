@@ -1,129 +1,212 @@
+/* --- 1. Variáveis de Cores & Fontes Góticas --- */
 :root {
-    --bg: #050505;
-    --paper: #b3a386;
-    --dark-ink: #121212;
-    --blood: #4d0000;
-    --font-horror: 'Creepster', cursive;
-    --font-script: 'Mrs Saint Delafield', cursive;
+    --bg-dark: #0f0a0d;           /* Fundo ultra escuro (quase preto) */
+    --gothic-stone: #2a2228;      /* Tom de pedra escura/ardósia */
+    --parchment: #c0b090;         /* Cor de pergaminho antigo */
+    --ink-dark: #1f1a20;          /* Cor da tinta escura */
+    --blood-gothic: #7b0018;      /* Vermelho vinho profundo */
+    
+    --font-title: 'Cinzel Decorative', serif; /* Títulos ornamentados */
+    --font-body: 'Fraunces', serif;          /* Corpo e links (serifa elegante) */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- 2. Reset Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* --- 3. O Fundo Gótico (Catedral/Castelo) --- */
 body {
-    background: var(--bg);
-    height: 100vh;
+    background-color: var(--bg-dark);
+    /* Imagem de fundo sutil de pedra ou textura escura */
+    background-image: url('https://www.transparenttextures.com/patterns/dark-circles.png'); /* Exemplo, substitua por sua imagem */
+    background-size: cover;
+    background-attachment: fixed; /* Fundo fixo para melhor visual */
+    font-family: var(--font-body);
+    color: var(--parchment); /* Texto em cor de pergaminho para contraste */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Special Elite', serif;
-    overflow: hidden;
-    cursor: none; /* Esconde o mouse para usar a lanterna */
+    padding: 20px;
+    overflow: hidden; /* Para não ter rolagem indesejada */
 }
 
-/* --- Efeitos de Iluminação --- */
-.vignette {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, transparent 30%, black 90%);
-    z-index: 10;
-    pointer-events: none;
-}
-
-.flashlight {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), transparent 10%, rgba(0,0,0,0.95) 40%);
-    z-index: 9;
-    pointer-events: none;
-}
-
-/* --- O Papel Amaldiçoado --- */
+/* --- 4. O "Pergaminho" Central (Container Principal) --- */
 .container {
-    background: var(--paper);
-    padding: 60px 40px;
-    width: 90%;
-    max-width: 480px;
+    background-color: var(--gothic-stone); /* Cor de pedra escura para o fundo */
+    width: 100%;
+    max-width: 550px; /* Um pouco maior para um ar mais imponente */
+    padding: 50px 40px;
     position: relative;
-    box-shadow: 0 0 100px rgba(0,0,0,1);
-    transform: rotate(-1deg);
-    animation: pulse 6s infinite ease-in-out;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    z-index: 1;
+    
+    border: 3px double var(--parchment); /* Borda dupla para destaque */
+    box-shadow: 0 0 25px rgba(0,0,0,0.8); /* Sombra intensa */
+    
+    /* Efeito de pergaminho antigo com leve rotação */
+    transform: rotate(1deg); 
+    background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png'); /* Textura de couro escuro ou pergaminho */
+    background-blend-mode: multiply; /* Mistura a cor de fundo com a textura */
+    background-color: var(--gothic-stone);
 }
 
-@keyframes pulse {
-    0%, 100% { transform: rotate(-1deg) scale(1); }
-    50% { transform: rotate(0.5deg) scale(1.02); filter: brightness(0.8); }
-}
-
-/* --- Texto Derretendo --- */
-.melting-text {
-    font-family: var(--font-horror);
-    font-size: 3rem;
-    color: var(--dark-ink);
+/* --- 5. Títulos e Subtítulos --- */
+h1 {
+    font-family: var(--font-title);
+    font-size: 2.8rem;
     text-align: center;
-    letter-spacing: 2px;
-    text-shadow: 2px 5px 10px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    color: var(--parchment);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Sombra no texto */
+    border-bottom: 1px solid rgba(192, 176, 144, 0.4); /* Linha sutil de divisão */
+    padding-bottom: 15px;
 }
 
 .subtitle {
-    font-family: var(--font-script);
-    font-size: 1.8rem;
+    font-family: var(--font-body);
     text-align: center;
-    color: var(--blood);
+    font-style: italic;
+    font-size: 1rem;
     margin-bottom: 40px;
+    color: rgba(192, 176, 144, 0.7);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-/* --- Links de Investigação --- */
-ul.links { list-style: none; }
+/* --- 6. Lista de Links Gótica --- */
+ul {
+    list-style: none;
+}
 
-li { margin-bottom: 20px; }
+li {
+    margin-bottom: 25px;
+}
 
 a {
     display: block;
     text-decoration: none;
-    color: var(--dark-ink);
-    font-size: 1.5rem;
-    padding: 15px;
-    border: 1px solid transparent;
-    border-left: 4px solid var(--dark-ink);
-    background: rgba(0,0,0,0.05);
-    transition: all 0.3s;
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--parchment);
+    padding: 18px 25px;
+    background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente escuro */
+    border: 1px solid rgba(192, 176, 144, 0.3); /* Borda sutil */
+    text-align: center;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
 }
 
+/* Ícone arcano/musical gótico */
+a::before {
+    content: "† "; /* Uma cruz gótica ou outro símbolo */
+    margin-right: 15px;
+    color: var(--blood-gothic);
+}
+
+/* Efeito ao passar o mouse/tocar */
 a:hover {
-    background: rgba(77, 0, 0, 0.1);
-    border-left: 4px solid var(--blood);
-    color: var(--blood);
-    transform: translateX(10px);
-    font-family: var(--font-horror); /* O texto se transforma ao passar o mouse */
+    background-color: rgba(123, 0, 24, 0.3); /* Um toque de vermelho vinho */
+    border-color: var(--blood-gothic);
+    transform: translateY(-3px); /* Leve levantamento */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    color: white; /* Letra mais clara no hover */
 }
 
-.master-link {
-    color: var(--blood);
-    border-left-color: var(--blood);
-    margin-top: 50px;
-    font-weight: bold;
-}
-
-/* --- Detalhes de Música Velha --- */
-.music-lines {
+/* --- 7. Estilo para o Mestre das Sombras --- */
+a.dm-link {
+    color: var(--blood-gothic);
+    border-color: var(--blood-gothic);
+    background-color: rgba(123, 0, 24, 0.2);
     margin-top: 40px;
-    border-top: 1px solid rgba(0,0,0,0.2);
-    height: 40px;
-    background-image: repeating-linear-gradient(transparent, transparent 5px, rgba(0,0,0,0.1) 5px, rgba(0,0,0,0.1) 6px);
+    font-size: 1.5rem;
 }
 
-/* --- Mobile --- */
-@media (max-width: 600px) {
-    body { cursor: auto; } /* Mouse volta ao normal no celular */
-    .flashlight { display: none; } /* Remove lanterna no mobile para não bugar o toque */
-    .vignette { background: radial-gradient(circle, transparent 50%, black 120%); }
+a.dm-link::before {
+    content: "𖤐 "; /* Um símbolo arcano ou estrela de 7 pontas */
+    color: var(--blood-gothic);
+}
+
+a.dm-link:hover {
+    background-color: rgba(123, 0, 24, 0.6);
+    color: white;
+}
+
+/* --- 8. Detalhe Decorativo: Selo de Cera --- */
+.wax-seal {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-color: var(--blood-gothic);
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8), 2px 2px 5px rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.2);
+    opacity: 0.7;
+    pointer-events: none; /* Não interfere nos cliques */
     
-    .container {
-        width: 95%;
-        padding: 40px 20px;
-        animation: none;
+    /* Um pequeno detalhe no selo (opcional) */
+    &::after {
+        content: "M"; /* Ou outro símbolo gótico */
+        font-family: var(--font-title);
+        color: rgba(255,255,255,0.8);
+        font-size: 35px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/* --- 9. Ajustes para Mobile Gótico --- */
+@media (max-width: 600px) {
+    body {
+        background-size: auto 100%; /* Ajusta o fundo para preencher a altura */
     }
 
-    .melting-text { font-size: 2.2rem; }
+    .container {
+        transform: rotate(0deg); /* Reto para melhor leitura */
+        padding: 40px 25px;
+        border: none; /* Remove a borda dupla no mobile para um visual mais limpo */
+        box-shadow: none;
+        background-color: transparent; /* Fica mais integrado ao fundo no mobile */
+        background-image: none; /* Remove a textura no mobile para otimização */
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(192, 176, 144, 0.2);
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+
+    a {
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        border: 1px solid rgba(192, 176, 144, 0.1);
+        background-color: rgba(0,0,0,0.5); /* Mais escuro no mobile */
+    }
+
+    a.dm-link {
+        margin-top: 30px;
+    }
+
+    .wax-seal {
+        bottom: 10px;
+        width: 50px;
+        height: 50px;
+        &::after {
+            font-size: 28px;
+        }
+    }
 }
